@@ -12,7 +12,7 @@ If you want to check your code or catch up, you can always grab latest from ther
 
 We <3 feedback, good or bad (you'll have some time to do this at the end):
 
-http://j.mp/fluent-feedback
+http://j.mp/pnnl-feedback
 
 ## Snippets
 
