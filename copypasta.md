@@ -1,17 +1,20 @@
 Layout HTML
 
 ```jade
-div
-  nav.top-nav.top-nav-light.cf(role='navigation')
-    input#menu-toggle.menu-toggle(type='checkbox')
-    label(htmlfor='menu-toggle') Menu
-    ul.list-unstyled.list-inline.cf
-      li Labelr
-      li
-        a(href='/repos') Repos
-      li.pull-right
-        a(href='/logout') Logout
-  .container
+body
+  div
+    nav.top-nav.top-nav-light.cf(data-hook='navbar', role='navigation')
+      input#menu-toggle.menu-toggle(type='checkbox')
+      label(htmlfor='menu-toggle') Menu
+      ul.list-unstyled.list-inline.cf
+        li Labelr
+        li
+          a(href='/repos') Repos
+        li.pull-right
+          span(data-hook='username')
+          |
+          a(href='/logout') Logout
+    .container(data-hook='page-container')
 ```
 
 GitHub auth
@@ -34,19 +37,6 @@ http://labelr-dev.herokuapp.com/authenticate/CODE'
 
 Login page:
 
-```
-<div class='container'>
-  <header role='banner'>
-    <h1>Labelr</h1>
-  </header>
-  <div>
-    <p>We label stuff for you, because, we can&trade;</p>
-    <a href='/login' class='button button-large'>
-      <span class='mega-octicon octicon-mark-github'></span> Login with GitHub
-    </a>
-  </div>
-</div>
-```
 
 ```
 .container
@@ -55,7 +45,9 @@ Login page:
   div
     p We label stuff for you, because, we can&trade;
     a.button.button-large(href='/login')
-      span.mega-octicon.octicon-mark-github Login with GitHub
+      span.mega-octicon.octicon-mark-github
+      |  Login with GitHub
+
 ```
 
 Styles
@@ -80,43 +72,52 @@ header
 
 ```
 
+Repos Page
 
-Repo Detail
+```
+section.page
+  h1 Repos
+
+  div(data-hook='repo-container')
+
+```
+
+Repo Detail Page
 
 ```
 .container
   h1
   p
+    button.button Add New
   ul
+```
+
+Repo Item
+
+```
+div
+  span.octicon.octicon-repo
+    a(data-hook='link')
+
 ```
 
 Labels
 
-```
-<form class='label'>
-  <span class='label-color avatar avatar-small avatar-rounded'>&nbsp;</span>
-  <input name='name'/>
-  <input name='color'/>
-  <button type='submit' class='button button-small'>Save</button>
-  <button type='button' class='button button-small button-unstyled'>cancel</button>
-</form>
-```
 
 ```
-form.label
-  span.label-color.avatar.avatar-small.avatar-rounded &nbsp;
-  input(name='name')
-  input(name='color')
-  button.button.button-small(type='submit') Save
-  button.button.button-small.button-unstyled(type='button') cancel
-```
+fdiv
+  form.label(data-hook='editing')
+    span.label-color(data-hook='color-dot') &nbsp;
+    input(name='name')
+    input(name='color')
+    button.button.button-small(type='submit') Save
+    button.button.button-small.button-unstyled(type='button', data-hook='cancel') cancel
 
-```
-.label
-  span.label-color &nbsp;
-  span
-  span.octicon.octicon-pencil
-  span.octicon.octicon-x
+  .label(data-hook='viewing')
+    span.label-color(data-hook='color-dot') &nbsp;
+    span(data-hook='name')
+    span.octicon.octicon-pencil(data-hook='edit')
+    span.octicon.octicon-x(data-hook='delete')
 ```
 
 For instructor
