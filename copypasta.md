@@ -2,19 +2,19 @@ Layout HTML
 
 ```jade
 body
-  div
-    nav.top-nav.top-nav-light.cf(data-hook='navbar', role='navigation')
-      input#menu-toggle.menu-toggle(type='checkbox')
-      label(htmlfor='menu-toggle') Menu
-      ul.list-unstyled.list-inline.cf
-        li Labelr
-        li
-          a(href='/repos') Repos
-        li.pull-right
-          span(data-hook='username')
-          |
-          a(href='/logout') Logout
-    .container(data-hook='page-container')
+  nav.top-nav.top-nav-light.cf(data-hook='navbar', role='navigation')
+    input#menu-toggle.menu-toggle(type='checkbox')
+    label(for='menu-toggle') Menu
+    ul.list-unstyled.list-inline.cf
+      li Labelr
+      li
+        a(href='/repos') Repos
+      li.pull-right
+        span(data-hook='username')
+        |
+        a(href='/logout') Logout
+  .container(data-hook='page-container')
+
 ```
 
 GitHub auth
@@ -39,7 +39,7 @@ Login page:
 
 
 ```
-.container
+section.page
   header(role='banner')
     h1 Labelr
   div
@@ -85,11 +85,13 @@ section.page
 Repo Detail Page
 
 ```
-.container
-  h1
+section.page
+  h1(data-hook='title')
   p
-    button.button Add New
-  ul
+    button.button(data-hook='add-label') Add New
+
+  ul(data-hook='label-container')
+
 ```
 
 Repo Item
@@ -105,7 +107,7 @@ Labels
 
 
 ```
-fdiv
+div
   form.label(data-hook='editing')
     span.label-color(data-hook='color-dot') &nbsp;
     input(name='name')
